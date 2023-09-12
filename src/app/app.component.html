@@ -1,0 +1,146 @@
+<style>
+  html,body {
+    height: 100%;
+  }
+
+  .form-home {
+    
+    padding: 1rem;
+  }
+  .form-home .form-floating:focus-within {
+    z-index: 2;
+  }
+
+  table,th,td {
+    border: 1px solid;
+  }
+  thead,p {
+    font-weight: bold;
+  }
+
+</style>
+
+<!-- code for getuserList -->
+<div class="d-flex align-items-center py-4 bg-body-tertiary">
+
+<main class="form-home w-100 m-auto">
+
+<div class="card">
+  <div class="card-header">
+    <h1 class="h3 mb-3 fw-normal">List Of Users</h1>
+  </div>
+  <div class="card-body  w-100">
+    <form  (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Current Grade ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of usersarray;">
+                <td>{{ user.employeeId }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.emailAddress }}</td>
+                <td>{{ user.phoneNumber }}</td>
+                <td>{{user.currentGradeId}}</td>
+              </tr>
+            </tbody>
+            <br>
+          </table>
+          <!-- <button class="btn btn-primary w-100 py-2" type="submit" (click)="ngOnInit()">View All Details</button> -->
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</main>
+</div>
+
+
+<!-- code for postUser/createuser -->
+
+<div class="d-flex align-items-center py-4 bg-body-tertiary">
+  <main class="form-home w-100 m-auto">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="h3 mb-3 fw-normal">Add User</h1>
+      </div>
+      <div class="card-body  w-100">
+        <div class="container mt-4">
+          <h2>User Registration</h2>
+          <form [formGroup]="addUser" (ngSubmit)="onPost()">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" id="firstName" formControlName="firstName">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" class="form-control" id="lastName" formControlName="lastName">
+            </div>
+            <div class="form-group">
+              <label for="phoneNumber">Phone Number</label>
+              <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="emailAddress">
+            </div>
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select class="form-control" id="role" formControlName="role">
+                <option value="HR">HR</option>
+                <option value="Employee">Employee</option>
+                <option value="TravelDeskExe">TravelDeskExe</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="currentGradeId">Current Grade ID</label>
+              <select class="form-control" id="currentGradeId" formControlName="currentGradeId">
+                <option [value]="1">1</option>
+                <option [value]="2">2</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<!-- code for delete user -->
+
+<div class="d-flex align-items-center py-4 bg-body-tertiary">
+  <main class="form-home w-100 m-auto">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="h3 mb-3 fw-normal">Delete User</h1>
+      </div>
+      <div class="card-body  w-100">
+        <div class="container mt-4">
+          <form [formGroup]="deleteUser" (ngSubmit)="onDelete()">
+            <div class="form-group">
+              <label for="employeeId">EmployeeId</label>
+              <input type="text" class="form-control" id="employeeId" formControlName="employeeId">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
